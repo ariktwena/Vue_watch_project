@@ -10,6 +10,52 @@
     <p>The name is: {{ this.name }}</p>
     <Alert />
     <Modal />
+    <SweetAlert />
+
+<!--    <SkatModal-->
+<!--      :modal="{-->
+<!--        id: 'custom_modal',-->
+<!--        text: 'Custom text to SKAT modal'-->
+<!--      }"-->
+
+<!--      :accept="{-->
+<!--        class: 'ikon-gem',-->
+<!--        id: 'rettelserModal_Savebutton',-->
+<!--        text: 'Gem'-->
+<!--      }"-->
+
+<!--      :cancel="{-->
+<!--        class: 'ikon-arrow-left',-->
+<!--        id: 'rettelserModal_Cancelbutton',-->
+<!--        text: 'Annuller'-->
+<!--      }"-->
+
+<!--      :input="{-->
+<!--          enabled: true,-->
+<!--          id: 'rettelserModal_incidentNumber',-->
+<!--          placeholder: 'This is a placeholder',-->
+<!--          required: true,-->
+<!--        }"-->
+
+<!--    />-->
+    <SkatModal
+        :modal="{
+        id: 'custom_modal',
+        text: 'Hov, der skete en fejl. Prøv igen.'
+      }"
+
+        :accept="{
+        class: 'ikon-gem',
+        id: 'rettelserModal_Savebutton',
+        text: 'Luk'
+      }"
+
+        :cancel="{
+          class: 'ikon-arrow-left',
+          id: 'rettelserModal_Cancelbutton',
+          text: ''
+        }"
+    />
   </div>
 </template>
 
@@ -18,6 +64,8 @@
 //import { watchEffect } from 'vue'
 import Alert from './components/Alert'
 import Modal from './components/Modal'
+import SweetAlert from "@/components/SweetAlert";
+import SkatModal from "@/components/SkatModal";
 
 export default {
   name: 'App',
@@ -34,7 +82,9 @@ export default {
   },
   components: {
     Alert,
-    Modal
+    Modal,
+    SweetAlert,
+    SkatModal
   },
   watch : {
     kilometers:function(val) {
@@ -51,6 +101,10 @@ export default {
     }
   },
   //watchEffect(() => console.log("Name: " + this.name))
+  mounted: function () {
+      alert('activated.....')
+    this.$bvModal.show('custom_modal')
+  }
 }
 </script>
 
